@@ -10,9 +10,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        backgroundColor: Color.fromARGB(255, 235, 250, 230),
+        fontFamily: "Lato",
         textTheme: TextTheme(
-          headline5: TextStyle(
-              fontSize: 25.0, letterSpacing: 0.8, fontWeight: FontWeight.bold),
+          headline6: TextStyle(
+            fontSize: 15.0,
+            color: Color.fromARGB(255, 4, 3, 15),
+            fontWeight: FontWeight.w700,
+          ),
+          subtitle1: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
+            color: Color.fromARGB(255, 4, 3, 15),
+          ),
+          subtitle2: TextStyle(
+            fontSize: 15.0,
+            fontWeight: FontWeight.normal,
+            color: Color.fromARGB(255, 4, 3, 15),
+          ),
         ),
       ),
       initialRoute: "/",

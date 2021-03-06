@@ -8,7 +8,6 @@ class ProductProvider {
 
     final decodedData = json.decode(response.body);
     final Products products = new Products.fromJsonList(decodedData);
-    print(products.items);
 
     return products.items;
   }
