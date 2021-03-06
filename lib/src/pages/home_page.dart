@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoping_app/src/models/product_model.dart';
 import 'package:shoping_app/src/providers/product_provider.dart';
 import 'package:shoping_app/src/widgets/container_card.dart';
 
@@ -11,20 +10,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<Product> futureProduct;
+  ProductProvider futureProduct = ProductProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         top: false,
         child: FutureBuilder(
+          future: futureProduct.getProducts(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return ContainerCard(products: snapshot.data);
             } else {
               return Center(
                 child: RefreshProgressIndicator(
-                  strokeWidth: 3,
+                  strokeWidth: 3.0,
                 ),
               );
             }
@@ -32,11 +32,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    futureProduct = getProducts();
   }
 }

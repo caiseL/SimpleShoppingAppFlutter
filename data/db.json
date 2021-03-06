@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "title": "T-Shirt",
+            "price": 50.0,
+            "products_sold": 2,
+            "image": "https://images.teemill.com/hqxMaaztpzti26SN0ABzbJgXUdWWswnxcVUrFWJVAVYvYVVV.png.png?w=1080&h=auto"
+        },
+        {
+            "id": 1,
+            "title": "Pants",
+            "price": 100.0,
+            "products_sold": 10,
+            "image": "https://martimx.vteximg.com.br/arquivos/ids/339563-1150-1150/1127866345-1.png?v=637063329340670000"
+        },
+        {
+            "id": 2,
+            "title": "X-Mas Sweater",
+            "price": 150.0,
+            "products_sold": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0107/0340/5120/products/KM_SWEATER_BACK_720x@2x.png?v=1572983793"
+        }
+    ]
+}

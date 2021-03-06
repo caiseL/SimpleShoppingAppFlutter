@@ -1,7 +1,16 @@
 class Products {
-  List<Product> products;
+  List<Product> items = [];
 
   Products();
+
+  Products.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) return;
+
+    for (var e in jsonList) {
+      final product = Product.fromJson(e);
+      items.add(product);
+    }
+  }
 }
 
 class Product {
@@ -17,7 +26,7 @@ class Product {
     return Product(
         id: json["id"],
         title: json["title"],
-        price: json["double"],
+        price: json["price"] / 1,
         productsSold: json["products_sold"],
         image: json["image"]);
   }
