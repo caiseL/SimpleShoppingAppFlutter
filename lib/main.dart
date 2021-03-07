@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoping_app/src/theme/theme_dart.dart';
 
 import 'src/pages/home_page.dart';
 
@@ -9,27 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        backgroundColor: Color.fromARGB(255, 235, 250, 230),
-        fontFamily: "Lato",
-        textTheme: TextTheme(
-          headline6: TextStyle(
-            fontSize: 15.0,
-            color: Color.fromARGB(255, 4, 3, 15),
-            fontWeight: FontWeight.w700,
-          ),
-          subtitle1: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
-            color: Color.fromARGB(255, 4, 3, 15),
-          ),
-          subtitle2: TextStyle(
-            fontSize: 15.0,
-            fontWeight: FontWeight.normal,
-            color: Color.fromARGB(255, 4, 3, 15),
-          ),
-        ),
-      ),
+      theme: getThemeData(),
       initialRoute: "/",
       routes: {
         "/": (BuildContext context) => HomePage(),
