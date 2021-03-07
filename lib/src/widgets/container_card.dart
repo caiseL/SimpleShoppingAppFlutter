@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/src/models/product_model.dart';
 
-import 'products_info.dart';
-
 class ContainerCard extends StatelessWidget {
   final Function nextPage;
   final List<Product> products;
@@ -17,15 +15,17 @@ class ContainerCard extends StatelessWidget {
       itemCount: products.length,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, index) {
-        final product = products[index];
+        final _product = products[index];
         final borderRadius = 5.0;
         return GestureDetector(
           onTap: () {
-            print(products[index].title);
-            ProductInfo(product: products[index]);
+            print(_product.title);
+
+            Navigator.of(context).pushNamed("details", arguments: {_product});
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(
+                vertical: 20, horizontal: 10), // Mueve esto abajo
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(borderRadius),
@@ -49,7 +49,7 @@ class ContainerCard extends StatelessWidget {
                             child: FadeInImage(
                               placeholder:
                                   AssetImage("assets/images/no_photo.png"),
-                              image: NetworkImage("${product.image}"),
+                              image: NetworkImage("${_product.image}"),
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -67,7 +67,7 @@ class ContainerCard extends StatelessWidget {
                               Container(
                                 height: 40,
                                 child: Text(
-                                  "${product.title}",
+                                  "${_product.title}",
                                   textAlign: TextAlign.justify,
                                   style: Theme.of(context).textTheme.headline6,
                                   maxLines: 2,
@@ -80,7 +80,7 @@ class ContainerCard extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text("\$${product.price}",
+                                    child: Text("\$${_product.price}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .subtitle1),
@@ -90,13 +90,13 @@ class ContainerCard extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children:
-                                          _getNumberStars(product, context),
+                                          _getNumberStars(_product, context),
                                     ),
                                   ),
                                 ],
                               ), // Crear dos textos diferentes.
                               Text(
-                                "${product.description}",
+                                "${_product.description}",
                                 textAlign: TextAlign.justify,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 4,

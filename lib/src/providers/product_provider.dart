@@ -7,6 +7,7 @@ class ProductProvider {
   String url = "localhost:3000";
   int _actualPage = 0;
   List<Product> _products = [];
+  bool _loading = false;
 
   final _productsStreamController = StreamController<List<Product>>.broadcast();
 
@@ -23,6 +24,10 @@ class ProductProvider {
   }
 
   Future<List<Product>> getProducts() async {
+    if (_loading) return [];
+
+    _loading = true;
+
     _actualPage++;
 
     var response = await http.get(
@@ -37,6 +42,7 @@ class ProductProvider {
     _products.addAll(resp);
     productsSink(_products);
 
+    _loading = false;
     return resp;
   }
 

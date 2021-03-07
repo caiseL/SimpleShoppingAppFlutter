@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/src/providers/product_provider.dart';
-import 'package:shopping_app/src/widgets/blink_icon.dart';
+import 'package:shopping_app/src/widgets/404_error_page.dart';
 import 'package:shopping_app/src/widgets/container_card.dart';
 import 'package:shopping_app/src/widgets/custom_drawer.dart';
 
@@ -13,9 +13,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ProductProvider futureProduct = ProductProvider();
-  bool connection = true;
   ScrollController _controller = ScrollController();
 
+  bool connection = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -80,13 +80,13 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
-    return noInternetConnection();
+    return ErrorPage();
   }
 
   @override
   void initState() {
     super.initState();
-    futureProduct.getProducts(); // O justo abajo del build
+    futureProduct.getProducts();
 
     _controller.addListener(() {
       if (_controller.position.pixels >=
@@ -99,52 +99,5 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     super.dispose();
-  }
-
-  Widget noInternetConnection() {
-    Size size = MediaQuery.of(context).size;
-
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              "assets/icon/icon2.png",
-              height: 150,
-            ),
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            BlinkIcon(),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            Text(
-              "ERROR 404",
-              style: TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 24.0),
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            Text(
-              "Something went wrong!",
-              style: Theme.of(context).textTheme.headline5,
-            ),
-            Text("You can't access this content right now",
-                style: Theme.of(context).textTheme.headline5),
-            Text("Please try again later!",
-                style: Theme.of(context).textTheme.headline5),
-            SizedBox(
-              height: size.height * 0.04,
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

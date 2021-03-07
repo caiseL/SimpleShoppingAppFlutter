@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/src/theme/theme_dart.dart';
+import 'package:shopping_app/src/widgets/product_details.dart';
 
 import 'src/pages/home_page.dart';
+import 'src/widgets/404_error_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (BuildContext context) => HomePage(),
+        "details": (BuildContext context) => ProductDetails(),
+        "error_page": (BuildContext context) => ErrorPage(),
       },
     );
   }
