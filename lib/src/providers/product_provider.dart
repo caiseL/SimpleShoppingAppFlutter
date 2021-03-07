@@ -1,10 +1,26 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:shoping_app/src/models/product_model.dart';
+import 'package:shopping_app/src/models/product_model.dart';
 
 class ProductProvider {
   String url = "localhost:3000";
   int _actualPage = 0;
+  List<Product> _products = [];
+
+  final _productsStreamController = StreamController<List<Product>>.broadcast();
+
+  Function(List<Product>) get productsSink =>
+      _productsStreamController.sink.add;
+
+  Stream<List<Product>> get productsStream => _productsStreamController.stream;
+
+  List<Product> fetchInfo(response) {
+    final decodedData = json.decode(response.body);
+    final Products products = new Products.fromJsonList(decodedData);
+
+    return products.items;
+  }
 
   Future<List<Product>> getProducts() async {
     _actualPage++;
@@ -16,14 +32,12 @@ class ProductProvider {
         {"_page": "$_actualPage", "_limit": "5"},
       ),
     );
-    return getInfo(response);
-  }
 
-  List<Product> getInfo(response) {
-    final decodedData = json.decode(response.body);
-    final Products products = new Products.fromJsonList(decodedData);
+    final resp = fetchInfo(response);
+    _products.addAll(resp);
+    productsSink(_products);
 
-    return products.items;
+    return resp;
   }
 
   Future<List<Product>> getSort(String sort, String order) async {
@@ -42,9 +56,13 @@ class ProductProvider {
         ),
       );
 
-      return getInfo(response);
+      return fetchInfo(response);
     }
 
     throw Exception("That's not a valid type of sort");
+  }
+
+  void close() {
+    _productsStreamController?.close();
   }
 }

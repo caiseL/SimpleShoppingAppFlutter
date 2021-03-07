@@ -5,14 +5,18 @@ ThemeData getThemeData() {
     fontFamily: "Lato",
 
     backgroundColor: Color.fromARGB(
-        255, 235, 250, 230), // Color of... you know.. the background
+        255, 240, 240, 240), // Color of... you know.. the background
     cardColor:
         Colors.white, // Color of the container around info of the product
-    accentColor: Colors.blue, // Color of bottom right gradient and drawer
-    primaryColor: Colors.grey, // Color of top left gradient
+    accentColor: Colors.orange, // Color of bottom right gradient and drawer
+    primaryColor: Colors.orange, // Color of top left gradient
     focusColor: Colors.grey, // Color of border radius of Card
     hintColor: Colors.grey, // Color border product
     textTheme: TextTheme(
+      headline5: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 17.0,
+      ),
       headline6: TextStyle(
         fontSize: 15.0,
         color: Color.fromARGB(255, 4, 3, 15),

@@ -14,10 +14,10 @@ class Products {
 }
 
 class Product {
-  int id;
+  String id;
   String title;
   double price;
-  double rating;
+  int rating; // It's supposed to be a double
   String image;
   String description;
   int available;
@@ -36,7 +36,7 @@ class Product {
         id: json["id"],
         title: json["title"],
         price: json["price"] / 1,
-        rating: json["rating"] / 1,
+        rating: int.parse(json["rating"]),
         image: json["image"],
         description: json["description"],
         available: json["available"]);

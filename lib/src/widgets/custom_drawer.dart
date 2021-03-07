@@ -38,7 +38,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/", (route) => false);
+            },
             title: Text(
               "Home",
               style: Theme.of(context).textTheme.subtitle1,

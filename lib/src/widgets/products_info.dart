@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoping_app/src/models/product_model.dart';
+import 'package:shopping_app/src/models/product_model.dart';
 
 class ProductInfo extends StatelessWidget {
   const ProductInfo({Key key, @required this.product}) : super(key: key);

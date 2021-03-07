@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:shoping_app/src/models/product_model.dart';
+import 'package:shopping_app/src/models/product_model.dart';
 
 import 'products_info.dart';
 
 class ContainerCard extends StatelessWidget {
-  const ContainerCard({Key key, @required this.products}) : super(key: key);
+  final Function nextPage;
   final List<Product> products;
+
+  ContainerCard({@required this.nextPage, @required this.products});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       itemCount: products.length,
-      scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, index) {
         final product = products[index];
         final borderRadius = 5.0;
@@ -43,11 +44,14 @@ class ContainerCard extends StatelessWidget {
                         child: Container(
                           height: size.height * 0.24,
                           color: Theme.of(context).hintColor,
-                          child: FadeInImage(
-                            placeholder:
-                                AssetImage("assets/images/loading.gif"),
-                            image: NetworkImage("${product.image}"),
-                            fit: BoxFit.contain,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FadeInImage(
+                              placeholder:
+                                  AssetImage("assets/images/no_photo.png"),
+                              image: NetworkImage("${product.image}"),
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),

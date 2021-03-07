@@ -1,21 +1,21 @@
-import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
 
 class CheckInternet {
-  StreamSubscription<DataConnectionStatus> listener;
-
-  void close() {
-    listener.cancel();
-  }
+  bool connection;
 
   checkConnection(BuildContext context) async {
-    listener = DataConnectionChecker().onStatusChange.listen(
-      (status) {
-        print(status);
-      },
-    );
-    return await DataConnectionChecker().connectionStatus;
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        print("TRUE");
+        connection = true;
+      }
+    } on SocketException catch (_) {
+      print("false");
+      connection = false;
+    }
+    return connection;
   }
 }
