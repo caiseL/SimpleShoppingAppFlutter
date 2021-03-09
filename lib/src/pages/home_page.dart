@@ -3,6 +3,7 @@ import 'package:shopping_app/src/providers/product_provider.dart';
 import 'package:shopping_app/src/widgets/404_error_page.dart';
 import 'package:shopping_app/src/widgets/container_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shopping_app/src/widgets/search_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: size.height * 0.03,
                       ),
-                      _searchBar(),
+                      SearchBar(),
                       SizedBox(
                         height: size.height * 0.03,
                       ),
@@ -159,43 +160,5 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     ];
-  }
-
-  Widget _searchBar() {
-    Size size = MediaQuery.of(context).size;
-
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: Theme.of(context).buttonColor),
-      width: double.infinity,
-      height: 90,
-      child: GestureDetector(
-        onTap: () {
-          print(size.height);
-        },
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-              Icon(
-                Icons.search,
-                size: 30.0,
-                color: Theme.of(context).hintColor,
-              ),
-              SizedBox(
-                width: 10.0,
-              ),
-              Expanded(
-                child: Text(
-                  "Search...",
-                  style: Theme.of(context).textTheme.button,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

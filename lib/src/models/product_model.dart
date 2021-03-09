@@ -21,6 +21,8 @@ class Product {
   List<dynamic> images;
   String description;
   int available;
+  List<dynamic> colors;
+  List<dynamic> sizes;
 
   Product(
       {this.id,
@@ -29,16 +31,21 @@ class Product {
       this.rating,
       this.images,
       this.description,
-      this.available});
+      this.available,
+      this.colors,
+      this.sizes});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-        id: json["id"],
-        images: json["images"],
-        title: json["title"],
-        price: json["price"] / 1,
-        rating: int.parse(json["rating"]),
-        description: json["description"],
-        available: json["available"]);
+      id: json["id"],
+      images: json["images"],
+      title: json["title"],
+      price: json["price"] / 1,
+      rating: int.parse(json["rating"]),
+      description: json["description"],
+      available: json["available"],
+      colors: json["colors"],
+      sizes: json["sizes"],
+    );
   }
 }

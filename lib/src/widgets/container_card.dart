@@ -20,9 +20,8 @@ class ContainerCard extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final product = products[index];
         return GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, "details", arguments: product);
-          },
+          onTap: () =>
+              Navigator.pushNamed(context, "details", arguments: product),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,

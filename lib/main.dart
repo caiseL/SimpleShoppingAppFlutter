@@ -5,6 +5,7 @@ import 'package:shopping_app/src/widgets/product_details.dart';
 
 import 'src/pages/home_page.dart';
 import 'src/widgets/404_error_page.dart';
+import 'src/widgets/product_images.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         "/": (BuildContext context) => HomePage(),
         "details": (BuildContext context) => ProductDetails(),
         "error_page": (BuildContext context) => ErrorPage(),
+        "product_images": (BuildContext context) => ProductImages(),
       },
     );
   }

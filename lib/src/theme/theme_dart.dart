@@ -7,7 +7,12 @@ ThemeData getThemeData() {
       elevation: 0,
     ),
     backgroundColor: Colors.white, // Back ground
+    primaryColor: Colors.black,
     //primaryColor: Colors.black,
+    bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)))),
     buttonColor: Color.fromARGB(255, 247, 247, 247), // Button search color
     hintColor: Color.fromARGB(255, 222, 222, 222), // search icon color
     accentColor: Color.fromARGB(255, 219, 189, 170), // Notification color
@@ -26,7 +31,7 @@ ThemeData getThemeData() {
       headline5: TextStyle(
         fontSize: 21.0,
         color: Colors.black, // Title products
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w900,
       ),
       headline6: TextStyle(
         fontSize: 19.0,
@@ -39,15 +44,15 @@ ThemeData getThemeData() {
         color: Color.fromARGB(255, 4, 3, 15),
       ),
       subtitle2: TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.normal,
+        fontSize: 15.0,
+        fontWeight: FontWeight.w700,
         color: Color.fromARGB(255, 4, 3, 15),
       ),
       bodyText1: TextStyle(
         height: 1.25,
         fontSize: 16.0,
         fontWeight: FontWeight.bold,
-        color: Color.fromARGB(180, 120, 120, 120),
+        color: Color.fromARGB(200, 120, 120, 120),
       ),
     ),
   );
