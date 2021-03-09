@@ -11,7 +11,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f91bb32-c6f8-4d1d-ab",
@@ -23,7 +33,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f91bb32",
@@ -35,7 +55,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f9",
@@ -48,7 +78,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f91b",
@@ -61,7 +101,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f9dasdas",
@@ -74,7 +124,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f91bdasd",
@@ -87,7 +147,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         },
         {
             "id": "4f91bb32-c6dasdf8",
@@ -100,7 +170,17 @@
             ],
             "rating": "5",
             "description": "The Princess Louise (born Louise Caroline Alberta, also known as Marchioness of Lorne and Duchess of Argyll by marriage; 18 March 1848 – 3 December 1939) was a member of the British Royal Family, the ",
-            "price": 56
+            "price": 56,
+            "colors": [
+                "red",
+                "blue",
+                "orange"
+            ],
+            "sizes": [
+                "S",
+                "M",
+                "XL"
+            ]
         }
     ]
 }
