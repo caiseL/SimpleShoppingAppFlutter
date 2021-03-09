@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/src/theme/theme_dart.dart';
+import 'package:shopping_app/src/widgets/my_behavior.dart';
 import 'package:shopping_app/src/widgets/product_details.dart';
 
 import 'src/pages/home_page.dart';
@@ -11,6 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return ScrollConfiguration(
+          child: child,
+          behavior: MyBehavior(),
+        );
+      },
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
       initialRoute: "/",

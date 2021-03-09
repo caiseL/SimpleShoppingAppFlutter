@@ -18,7 +18,7 @@ class Product {
   String title;
   double price;
   int rating; // It's supposed to be a double
-  String image;
+  List<dynamic> images;
   String description;
   int available;
 
@@ -27,17 +27,17 @@ class Product {
       this.title,
       this.price,
       this.rating,
-      this.image,
+      this.images,
       this.description,
       this.available});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
         id: json["id"],
+        images: json["images"],
         title: json["title"],
         price: json["price"] / 1,
         rating: int.parse(json["rating"]),
-        image: json["image"],
         description: json["description"],
         available: json["available"]);
   }

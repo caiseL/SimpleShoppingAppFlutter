@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/src/providers/product_provider.dart';
 import 'package:shopping_app/src/widgets/404_error_page.dart';
 import 'package:shopping_app/src/widgets/container_card.dart';
-import 'package:shopping_app/src/widgets/custom_drawer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -18,61 +18,65 @@ class _HomePageState extends State<HomePage> {
   bool connection = true;
   @override
   Widget build(BuildContext context) {
+    _controller.addListener(() {
+      if (_controller.position.pixels >=
+          _controller.position.maxScrollExtent - 200) {
+        futureProduct.getProducts();
+      }
+    });
     Size size = MediaQuery.of(context).size;
 
     if (connection) {
-      return Scaffold(
-        drawer: CustomDrawer(),
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          title: Image.asset(
-            "assets/icon/icon2.png",
-            height: 75,
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
-            ),
-          ],
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Theme.of(context).primaryColor,
-                  Theme.of(context).accentColor,
-                ],
-              ),
-            ),
-          ),
-        ),
-        body: SafeArea(
-          top: false,
-          child: SingleChildScrollView(
-            controller: _controller,
-            physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Container(
-                  height: size.height * 0.25, // search bar?
+      return SafeArea(
+        top: false,
+        child: Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
+          body: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: CustomScrollView(
+              physics: NeverScrollableScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  elevation: 0,
+                  actionsIconTheme:
+                      IconThemeData(color: Colors.black, size: 30.0),
+                  backgroundColor: Color.fromARGB(0, 247, 247, 247),
+                  leading: _avatarImage(),
+                  actions: _actionsIcons(),
                 ),
-                StreamBuilder(
-                  stream: futureProduct.productsStream,
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) {
-                      return ContainerCard(
-                          products: snapshot.data,
-                          nextPage: futureProduct.getProducts);
-                    } else {
-                      return Center(
-                        child: Image.asset("assets/images/loading.gif",
-                            height: size.height * 0.25),
-                      );
-                    }
-                  },
+                SliverFillRemaining(
+                  child: ListView(
+                    controller: _controller,
+                    children: [
+                      Container(
+                        alignment: Alignment.bottomLeft,
+                        height: size.height * 0.25,
+                        child: Text(
+                          "The most popular clothes today",
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      _searchBar(),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      StreamBuilder(
+                        stream: futureProduct.productsStream,
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasData) {
+                            return ContainerCard(
+                                nextPage: futureProduct.getProducts,
+                                products: snapshot.data);
+                          }
+                          return Container();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -87,17 +91,111 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     futureProduct.getProducts();
-
-    _controller.addListener(() {
-      if (_controller.position.pixels >=
-          _controller.position.maxScrollExtent - 200) {
-        futureProduct.getProducts();
-      }
-    });
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+  Widget _avatarImage() {
+    return Container(
+      margin: EdgeInsets.all(6.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25.0),
+        child: CachedNetworkImage(
+            fit: BoxFit.cover,
+            placeholder: (context, url) => Image.asset(
+                  "assets/images/no_photo.png",
+                ),
+            imageUrl:
+                "https://media.gq.com.mx/photos/5f23041351bcbdbc95b13466/master/pass/JEFF.jpg"),
+      ),
+    );
+  }
+
+  List<Widget> _actionsIcons() {
+    return [
+      GestureDetector(
+        child: Icon(Icons.tune_outlined, size: 30.0),
+        onTap: () {
+          //Show dialog
+        },
+      ),
+      SizedBox(
+        width: 7.5,
+      ),
+      Stack(
+        alignment: Alignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: GestureDetector(
+              onTap: () {},
+              child: Icon(
+                Icons.shopping_bag_outlined,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 2.5,
+            right: 0.0,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+                shape: BoxShape.circle,
+                color: Theme.of(context).accentColor,
+              ),
+              child: Container(
+                padding: EdgeInsets.all(4.0),
+                child: Text(
+                  "2",
+                  textScaleFactor: 0.8,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ];
+  }
+
+  Widget _searchBar() {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Theme.of(context).buttonColor),
+      width: double.infinity,
+      height: 90,
+      child: GestureDetector(
+        onTap: () {
+          print(size.height);
+        },
+        child: Container(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Icon(
+                Icons.search,
+                size: 30.0,
+                color: Theme.of(context).hintColor,
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Expanded(
+                child: Text(
+                  "Search...",
+                  style: Theme.of(context).textTheme.button,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

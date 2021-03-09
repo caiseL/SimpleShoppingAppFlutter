@@ -34,7 +34,7 @@ class ProductProvider {
       Uri.http(
         url,
         "/products",
-        {"_page": "$_actualPage", "_limit": "5"},
+        {"_page": "$_actualPage", "_limit": "10"},
       ),
     );
 

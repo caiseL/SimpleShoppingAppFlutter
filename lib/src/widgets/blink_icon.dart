@@ -12,7 +12,9 @@ class _BlinkIconState extends State<BlinkIcon>
   @override
   void initState() {
     _animationController = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500));
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
     _animationController.repeat(reverse: true);
     super.initState();
   }
