@@ -16,11 +16,10 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     final Product product = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      backgroundColor: Colors.transparent,
       bottomSheet: Container(
         padding: EdgeInsets.all(25.0),
         width: size.width,
-        height: size.height * 0.60,
+        height: size.height * 0.6,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0),
@@ -74,7 +73,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     });
               },
               child: Container(
-                padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
+                padding: EdgeInsets.only(top: 5.0, bottom: 25.0),
                 child: Text(
                   "${product.description}",
                   maxLines: 3,
@@ -85,29 +84,24 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             Text("Color", style: Theme.of(context).textTheme.subtitle2),
-            Wrap(
-              spacing: 10.0,
-              runSpacing: 4.0,
-              children: getColors(product),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
+            Container(
+                alignment: Alignment.center,
+                height: size.height * 0.1,
+                child: getColors(product)),
             Text("Size", style: Theme.of(context).textTheme.subtitle2),
-            Wrap(
-              spacing: 10.0,
-              runSpacing: 4.0,
-              children: getSize(product),
-            ),
-            SizedBox(
-              height: 10.0,
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: size.height * 0.1,
+                child: getSizes(product),
+              ),
             ),
             GestureDetector(
               onTap: () {},
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Container(
-                  height: size.height * 0.086,
+                  height: size.height * 0.1,
                   color: Colors.black,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -176,9 +170,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
-  List<Widget> getColors(Product product) {
-    List<Widget> widgets = [];
-    // product.colors = ["black", "white", "orange"]
+  Widget getColors(Product product) {
     Map<String, Color> colors = {
       "black".toLowerCase(): Colors.black,
       "white".toLowerCase(): Colors.white,
@@ -187,37 +179,48 @@ class _ProductDetailsState extends State<ProductDetails> {
       "orange".toLowerCase(): Colors.orange,
       "green".toLowerCase(): Colors.green,
     };
-
-    for (var _color in product.colors) {
-      widgets.add(
-        ChoiceChip(
-          avatar: CircleAvatar(
-            backgroundColor: colors[_color],
+    // List _colorsAvailable = ["green", "orange", "red"];
+    final _colorsAvailable = product.colors;
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+      itemCount: _colorsAvailable.length,
+      itemBuilder: (BuildContext context, index) {
+        final _color = _colorsAvailable[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ChoiceChip(
+            selected: false,
+            backgroundColor: Colors.transparent,
+            avatar: CircleAvatar(
+              backgroundColor: colors[_color],
+            ),
+            label: Text(
+                _color.toString().replaceFirst(
+                    _color[0], _color[0].toString().toUpperCase()),
+                style: Theme.of(context).textTheme.subtitle2),
           ),
-          label: Text(_color
-              .toString()
-              .replaceFirst(_color[0], _color[0].toString().toUpperCase())),
-          selected: false,
-        ),
-      );
-    }
-    return widgets;
+        );
+      },
+    );
   }
 
-  List<Widget> getSize(Product product) {
-    List<Widget> widgets = [];
-    // product.colors = ["s", "m", "l"]
-    for (var _size in product.sizes) {
-      widgets.add(
-        ChoiceChip(
-          label: Text(
-            "$_size",
-            style: TextStyle(color: Colors.black, fontSize: 18.0),
+  Widget getSizes(Product product) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+      itemCount: product.sizes.length,
+      itemBuilder: (BuildContext context, index) {
+        final _size = product.sizes[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ChoiceChip(
+            selected: false,
+            backgroundColor: Colors.transparent,
+            label: Text("$_size", style: Theme.of(context).textTheme.subtitle2),
           ),
-          selected: false,
-        ),
-      );
-    }
-    return widgets;
+        );
+      },
+    );
   }
 }

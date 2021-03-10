@@ -14,7 +14,8 @@ class CustomSwiper extends StatelessWidget {
       pagination: SwiperPagination(
         alignment: Alignment.bottomCenter,
         builder: DotSwiperPaginationBuilder(
-            color: Theme.of(context).focusColor, activeColor: Colors.black),
+            color: Theme.of(context).backgroundColor,
+            activeColor: Colors.black),
       ),
       itemBuilder: (context, index) {
         if (index == 0) {
