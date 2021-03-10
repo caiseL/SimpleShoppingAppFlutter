@@ -68,6 +68,18 @@ class ProductProvider {
     throw Exception("That's not a valid type of sort");
   }
 
+  Future<List<Product>> searchProducts(String query) async {
+    var response = await http.get(
+      Uri.http(
+        url,
+        "/products",
+        {"q": "$query"},
+      ),
+    );
+
+    return fetchInfo(response);
+  }
+
   void close() {
     _productsStreamController?.close();
   }

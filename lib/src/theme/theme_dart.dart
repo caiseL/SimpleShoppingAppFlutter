@@ -8,7 +8,6 @@ ThemeData getThemeData() {
     ),
     backgroundColor: Colors.white, // Back ground
     primaryColor: Colors.black,
-    canvasColor: Colors.transparent,
     bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
