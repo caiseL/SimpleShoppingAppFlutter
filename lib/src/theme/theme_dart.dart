@@ -37,13 +37,13 @@ ThemeData getThemeData() {
         fontWeight: FontWeight.w700,
       ),
       subtitle1: TextStyle(
-        fontSize: 17.0,
-        fontWeight: FontWeight.w900,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w700,
         color: Color.fromARGB(255, 4, 3, 15),
       ),
       subtitle2: TextStyle(
-        fontSize: 15.0,
-        fontWeight: FontWeight.w700,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w500,
         color: Color.fromARGB(255, 4, 3, 15),
       ),
       bodyText1: TextStyle(

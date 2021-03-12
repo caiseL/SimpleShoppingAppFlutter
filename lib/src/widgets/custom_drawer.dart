@@ -6,11 +6,12 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Drawer(
       child: ListView(
         children: [
           Container(
-            height: 100,
+            height: size.height * 0.15,
             color: Theme.of(context).accentColor,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -31,8 +32,10 @@ class CustomDrawer extends StatelessWidget {
                     "Hello, {userNameFirstName}",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
-                    style:
-                        TextStyle(fontStyle: FontStyle.italic, fontSize: 18.0),
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 18.0),
                   ),
                 ),
               ]),
@@ -49,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
             },
             title: Text(
               "Home",
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
           ListTile(
@@ -62,76 +65,52 @@ class CustomDrawer extends StatelessWidget {
             },
             title: Text(
               "Account",
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
           ListTile(
             leading: FaIcon(
-              FontAwesomeIcons.building,
+              FontAwesomeIcons.tshirt,
               color: Colors.black,
             ),
             onTap: () {
               Navigator.of(context).pushNamed("categories");
             },
             title: Text(
-              "Departments",
-              style: Theme.of(context).textTheme.subtitle1,
+              "Categories",
+              style: Theme.of(context).textTheme.subtitle2,
             ),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
             leading: FaIcon(
-              FontAwesomeIcons.truck,
+              FontAwesomeIcons.solidHeart,
               color: Colors.black,
             ),
             onTap: () {},
             title: Text(
-              "Deliveries",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),
-          Divider(
-            thickness: 1.5,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-            child: Text(
-              "Configurations",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.credit_card,
-              color: Colors.black,
-            ),
-            onTap: () {},
-            title: Text(
-              "Payment",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.notifications, color: Colors.black),
-            onTap: () {},
-            title: Text(
-              "Notifications",
-              style: Theme.of(context).textTheme.subtitle1,
+              "Your favorites",
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
           ListTile(
             leading: Icon(Icons.settings, color: Colors.black),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed("settings_page");
+            },
             title: Text(
               "Settings",
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
           ListTile(
             onTap: () {},
             title: Text(
               "About",
-              style: Theme.of(context).textTheme.subtitle1,
+              style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 18.0,
+                  color: Colors.black),
             ),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),

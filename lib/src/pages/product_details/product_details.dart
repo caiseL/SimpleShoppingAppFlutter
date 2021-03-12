@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shopping_app/src/models/product_model.dart';
 import 'package:shopping_app/src/widgets/custom_swiper.dart';
 
@@ -19,7 +20,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       bottomSheet: Container(
         padding: EdgeInsets.all(25.0),
         width: size.width,
-        height: size.height * 0.6,
+        height: size.height * 0.61,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0),
@@ -145,16 +146,18 @@ class _ProductDetailsState extends State<ProductDetails> {
               isFavorite = !isFavorite;
             });
           },
-          child: Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: isFavorite
-                ? Icon(Icons.thumb_up)
-                : Icon(Icons.thumb_up_outlined),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: isFavorite
+                  ? FaIcon(FontAwesomeIcons.heart)
+                  : FaIcon(FontAwesomeIcons.solidHeart),
+            ),
           ),
         ),
       ],
       backgroundColor: Theme.of(context).focusColor,
-      expandedHeight: size.height * 0.375,
+      expandedHeight: size.height * 0.360,
       elevation: 2.0,
       floating: false,
       pinned: true,

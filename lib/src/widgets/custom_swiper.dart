@@ -22,8 +22,9 @@ class CustomSwiper extends StatelessWidget {
           return Hero(
             tag: product.id,
             child: GestureDetector(
-              onTap: () => Navigator.of(context)
-                  .pushNamed("product_images", arguments: product.images),
+              onTap: () => Navigator.of(context).pushNamed(
+                  "details/product_images",
+                  arguments: product.images),
               child: FadeInImage(
                 placeholder: AssetImage("assets/images/no_photo.png"),
                 image: NetworkImage("${product.images[index]}"),
@@ -33,7 +34,7 @@ class CustomSwiper extends StatelessWidget {
         }
         return GestureDetector(
           onTap: () => Navigator.of(context)
-              .pushNamed("product_images", arguments: product.images),
+              .pushNamed("details/product_images", arguments: product.images),
           child: FadeInImage(
             placeholder: AssetImage("assets/images/no_photo.png"),
             image: NetworkImage("${product.images[index]}"),
