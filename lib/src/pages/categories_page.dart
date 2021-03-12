@@ -16,18 +16,9 @@ class CategoriesPage extends StatelessWidget {
     ],
     ["New collection", "https://ichef.bbci.co.uk/images/ic/448xn/p08psnqn.png"],
     [
-      "Women",
-      "https://lagrace.com.ng/wp-content/uploads/2020/07/women_clothes_1-300x300.png"
-    ],
-    [
-      "Men",
-      "https://ae01.alicdn.com/kf/Hd93120976d0943509204f4457456ea78S/BROWON-Brand-Male-Pullover-Sweater-Men-Knitted-Striped-Slim-Sweaters-O-neck-Mens-Knitwear-Clothes-Men.jpg_Q90.jpg_.webp"
-    ],
-    [
-      "Kids",
-      "https://cdn.shopify.com/s/files/1/1389/2207/products/swshapebest2.png?v=1600276027"
-    ],
-    ["New collection", "https://ichef.bbci.co.uk/images/ic/448xn/p08psnqn.png"]
+      "Other categories",
+      "https://ichef.bbci.co.uk/images/ic/448xn/p08psnqn.png"
+    ]
   ];
 
   @override

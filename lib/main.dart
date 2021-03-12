@@ -23,20 +23,27 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
       initialRoute: "/",
-      routes: {
-        // This ones are here because they use Hero Animation
-        "details": (BuildContext context) => ProductDetails(),
-        "product_images": (BuildContext context) => ProductImages(),
-      },
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/':
             return PageTransition(
                 child: HomePage(), type: PageTransitionType.fade);
             break;
+          case 'details':
+            return PageTransition(
+                child: ProductDetails(),
+                type: PageTransitionType.fade,
+                settings: settings);
+            break;
           case 'error_page':
             return PageTransition(
                 child: ErrorPage(), type: PageTransitionType.fade);
+            break;
+          case 'product_images':
+            return PageTransition(
+                child: ProductImages(),
+                type: PageTransitionType.fade,
+                settings: settings);
             break;
           case 'categories':
             return PageTransition(
