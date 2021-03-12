@@ -42,6 +42,7 @@ class CustomSearchDelegate extends SearchDelegate {
           if (snapshot.hasData) {
             final products = snapshot.data;
             return ListView(
+                // Or a ListView.builder, it doesn't really matter that much. I think...
                 children: products
                     .map((product) => ListTile(
                         leading: FadeInImage(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key key}) : super(key: key);
@@ -38,6 +39,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
             onTap: () {
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/", (route) => false);
@@ -48,6 +53,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: FaIcon(
+              FontAwesomeIcons.truck,
+              color: Colors.black,
+            ),
             onTap: () {},
             title: Text(
               "Deliveries",
@@ -55,6 +64,10 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: Icon(
+              Icons.person,
+              color: Colors.black,
+            ),
             onTap: () {},
             title: Text(
               "Account",
@@ -62,7 +75,13 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: () {},
+            leading: FaIcon(
+              FontAwesomeIcons.building,
+              color: Colors.black,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed("categories");
+            },
             title: Text(
               "Departments",
               style: Theme.of(context).textTheme.subtitle1,
@@ -77,11 +96,15 @@ class CustomDrawer extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
                 "PROGRAMS AND CHARACTERISTICS",
-                style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
           ),
           ListTile(
+            leading: Icon(
+              Icons.credit_card,
+              color: Colors.black,
+            ),
             onTap: () {},
             title: Text(
               "Payment",
@@ -89,6 +112,7 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: FaIcon(FontAwesomeIcons.tag, color: Colors.black),
             onTap: () {},
             title: Text(
               "Promotions",
@@ -100,6 +124,7 @@ class CustomDrawer extends StatelessWidget {
             thickness: 1.5,
           ),
           ListTile(
+            leading: Icon(Icons.notifications, color: Colors.black),
             onTap: () {},
             title: Text(
               "Notifications",
@@ -107,6 +132,7 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: Icon(Icons.settings, color: Colors.black),
             onTap: () {},
             title: Text(
               "Settings",

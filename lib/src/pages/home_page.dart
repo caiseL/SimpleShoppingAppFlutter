@@ -3,6 +3,7 @@ import 'package:shopping_app/src/providers/product_provider.dart';
 import 'package:shopping_app/src/widgets/404_error_page.dart';
 import 'package:shopping_app/src/widgets/container_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shopping_app/src/widgets/custom_drawer.dart';
 import 'package:shopping_app/src/widgets/search_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,11 +27,14 @@ class _HomePageState extends State<HomePage> {
       }
     });
     Size size = MediaQuery.of(context).size;
-
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     if (connection) {
       return SafeArea(
         top: false,
         child: Scaffold(
+          drawer: CustomDrawer(),
+          key: _scaffoldKey,
           backgroundColor: Theme.of(context).backgroundColor,
           body: Padding(
             padding: const EdgeInsets.all(25.0),
@@ -42,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                   actionsIconTheme:
                       IconThemeData(color: Colors.black, size: 30.0),
                   backgroundColor: Color.fromARGB(0, 247, 247, 247),
-                  leading: _avatarImage(),
+                  leading: _avatarImage(_scaffoldKey),
                   actions: _actionsIcons(),
                 ),
                 SliverFillRemaining(
@@ -99,18 +103,21 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  Widget _avatarImage() {
-    return Container(
-      margin: EdgeInsets.all(6.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25.0),
-        child: CachedNetworkImage(
-            fit: BoxFit.cover,
-            placeholder: (context, url) => Image.asset(
-                  "assets/images/no_photo.png",
-                ),
-            imageUrl:
-                "https://media.gq.com.mx/photos/5f23041351bcbdbc95b13466/master/pass/JEFF.jpg"),
+  Widget _avatarImage(_scaffoldKey) {
+    return GestureDetector(
+      onTap: () => _scaffoldKey.currentState.openDrawer(),
+      child: Container(
+        margin: EdgeInsets.all(6.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25.0),
+          child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              placeholder: (context, url) => Image.asset(
+                    "assets/images/no_photo.png",
+                  ),
+              imageUrl:
+                  "https://media.gq.com.mx/photos/5f23041351bcbdbc95b13466/master/pass/JEFF.jpg"),
+        ),
       ),
     );
   }

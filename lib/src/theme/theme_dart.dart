@@ -7,20 +7,19 @@ ThemeData getThemeData() {
       elevation: 0,
     ),
     backgroundColor: Colors.white, // Back ground
-    primaryColor: Colors.black,
     bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)))),
-    buttonColor: Color.fromARGB(255, 247, 247, 247), // Button search color
-    hintColor: Color.fromARGB(255, 222, 222, 222), // search icon color
+    buttonColor: Color.fromARGB(255, 237, 237, 237), // Button search color
+    hintColor: Color.fromARGB(255, 150, 150, 150), // search icon color
     accentColor: Color.fromARGB(255, 219, 189, 170), // Notification color
     focusColor: Color.fromARGB(255, 230, 231, 232), // Container color
     textTheme: TextTheme(
       button: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
-        color: Color.fromARGB(255, 222, 222, 222), // "Search" color
+        color: Color.fromARGB(255, 150, 150, 150), // "Search" color
       ),
       headline4: TextStyle(
         fontSize: 34.0,
