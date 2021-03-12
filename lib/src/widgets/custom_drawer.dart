@@ -53,22 +53,13 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: FaIcon(
-              FontAwesomeIcons.truck,
-              color: Colors.black,
-            ),
-            onTap: () {},
-            title: Text(
-              "Deliveries",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),
-          ListTile(
             leading: Icon(
               Icons.person,
               color: Colors.black,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed("account");
+            },
             title: Text(
               "Account",
               style: Theme.of(context).textTheme.subtitle1,
@@ -88,16 +79,25 @@ class CustomDrawer extends StatelessWidget {
             ),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
+          ListTile(
+            leading: FaIcon(
+              FontAwesomeIcons.truck,
+              color: Colors.black,
+            ),
+            onTap: () {},
+            title: Text(
+              "Deliveries",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
           Divider(
             thickness: 1.5,
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                "PROGRAMS AND CHARACTERISTICS",
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+            child: Text(
+              "Configurations",
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ),
           ListTile(
@@ -110,18 +110,6 @@ class CustomDrawer extends StatelessWidget {
               "Payment",
               style: Theme.of(context).textTheme.subtitle1,
             ),
-          ),
-          ListTile(
-            leading: FaIcon(FontAwesomeIcons.tag, color: Colors.black),
-            onTap: () {},
-            title: Text(
-              "Promotions",
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-          Divider(
-            thickness: 1.5,
           ),
           ListTile(
             leading: Icon(Icons.notifications, color: Colors.black),

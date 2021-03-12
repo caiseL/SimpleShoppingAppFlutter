@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/src/pages/account_page.dart';
 import 'package:shopping_app/src/pages/categories_page.dart';
 import 'package:shopping_app/src/pages/home_page.dart';
 import 'package:shopping_app/src/pages/product_images.dart';
@@ -48,6 +49,11 @@ class MyApp extends StatelessWidget {
           case 'categories':
             return PageTransition(
                 child: CategoriesPage(), type: PageTransitionType.fade);
+            break;
+
+          case 'account':
+            return PageTransition(
+                child: AccountPage(), type: PageTransitionType.fade);
             break;
           default:
             return null;
