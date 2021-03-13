@@ -35,12 +35,8 @@ class AccountPage extends StatelessWidget {
                 "https://media.gq.com.mx/photos/5f23041351bcbdbc95b13466/master/pass/JEFF.jpg",
               )),
         ),
-        Text(
-          "Jeff Preston Bezos",
-          style: TextStyle(
-            fontSize: 22.0,
-          ),
-        ),
+        Text("Jeff Preston Bezos",
+            style: Theme.of(context).textTheme.headline3),
         Text("jeffbezos@gmail.com",
             style: TextStyle(fontSize: 16.0, color: Colors.grey)),
         SizedBox(

@@ -21,15 +21,30 @@ ThemeData getThemeData() {
         fontWeight: FontWeight.bold,
         color: Color.fromARGB(255, 150, 150, 150), // "Search" color
       ),
-      headline4: TextStyle(
+      headline1: TextStyle(
         fontSize: 34.0,
         fontWeight: FontWeight.w900,
+        color: Color.fromARGB(255, 23, 23, 23),
+      ),
+      headline2: TextStyle(
+        fontSize: 27.0,
+        fontWeight: FontWeight.w900,
+        color: Color.fromARGB(255, 23, 23, 23),
+      ),
+      headline3: TextStyle(
+        fontSize: 27.0,
+        fontWeight: FontWeight.w700,
+        color: Color.fromARGB(255, 23, 23, 23),
+      ),
+      headline4: TextStyle(
+        fontSize: 23.0,
+        fontWeight: FontWeight.w500,
         color: Color.fromARGB(255, 23, 23, 23),
       ),
       headline5: TextStyle(
         fontSize: 21.0,
         color: Colors.black, // Title products
-        fontWeight: FontWeight.w900,
+        fontWeight: FontWeight.w500,
       ),
       headline6: TextStyle(
         fontSize: 19.0,

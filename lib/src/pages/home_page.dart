@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                         height: size.height * 0.25,
                         child: Text(
                           "The most popular clothes today",
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                       ),
                       SizedBox(
@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
       GestureDetector(
         child: Icon(Icons.tune_outlined, size: 30.0),
         onTap: () {
-          //Show dialog
+          Navigator.pushNamed(context, "full_screen_dialog");
         },
       ),
       SizedBox(

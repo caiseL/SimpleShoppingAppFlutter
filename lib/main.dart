@@ -7,6 +7,7 @@ import 'package:shopping_app/src/pages/product_details/product_images.dart';
 import 'package:shopping_app/src/pages/settings_page.dart';
 import 'package:shopping_app/src/theme/theme_dart.dart';
 import 'package:shopping_app/src/widgets/404_error_page.dart';
+import 'package:shopping_app/src/widgets/full_screen_dialog.dart';
 import 'package:shopping_app/src/widgets/my_behavior.dart';
 import 'package:shopping_app/src/pages/product_details/product_details.dart';
 import 'package:page_transition/page_transition.dart';
@@ -63,6 +64,10 @@ class MyApp extends StatelessWidget {
           case 'settings_page':
             return PageTransition(
                 child: SettingsPage(), type: PageTransitionType.fade);
+          case 'full_screen_dialog':
+            return PageTransition(
+                child: FullScreenDialog(),
+                type: PageTransitionType.bottomToTop);
           default:
             return null;
         }
