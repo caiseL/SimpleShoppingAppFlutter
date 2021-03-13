@@ -7,25 +7,26 @@ class ProductImages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<dynamic> images = ModalRoute.of(context).settings.arguments;
+    final List<dynamic> info = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Swiper(
-        itemCount: images.length,
-        pagination: SwiperPagination(
-          alignment: Alignment.bottomCenter,
-          builder: DotSwiperPaginationBuilder(
-              color: Theme.of(context).focusColor, activeColor: Colors.black),
+      body: Container(
+        child: Swiper(
+          index: info[0],
+          itemCount: info[1].length,
+          pagination: SwiperPagination(
+            alignment: Alignment.bottomCenter,
+            builder: DotSwiperPaginationBuilder(
+                color: Colors.grey, activeColor: Colors.white),
+          ),
+          itemBuilder: (context, index) {
+            return Container(
+              child: PhotoView(
+                imageProvider: NetworkImage("${info[1][index]}"),
+              ),
+            );
+          },
         ),
-        itemBuilder: (context, index) {
-          return Container(
-            color: Colors.white,
-            child: PhotoView(
-              imageProvider: NetworkImage("${images[index]}"),
-            ),
-          );
-        },
       ),
     );
   }

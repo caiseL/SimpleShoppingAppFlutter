@@ -9,6 +9,10 @@ class CustomSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Swiper(
+      onTap: (index) {
+        Navigator.of(context).pushNamed("details/product_images",
+            arguments: [index, product.images]);
+      },
       index: 0,
       itemCount: product.images.length,
       pagination: SwiperPagination(
@@ -21,24 +25,15 @@ class CustomSwiper extends StatelessWidget {
         if (index == 0) {
           return Hero(
             tag: product.id,
-            child: GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed(
-                  "details/product_images",
-                  arguments: product.images),
-              child: FadeInImage(
-                placeholder: AssetImage("assets/images/no_photo.png"),
-                image: NetworkImage("${product.images[index]}"),
-              ),
+            child: FadeInImage(
+              placeholder: AssetImage("assets/images/no_photo.png"),
+              image: NetworkImage("${product.images[index]}"),
             ),
           );
         }
-        return GestureDetector(
-          onTap: () => Navigator.of(context)
-              .pushNamed("details/product_images", arguments: product.images),
-          child: FadeInImage(
-            placeholder: AssetImage("assets/images/no_photo.png"),
-            image: NetworkImage("${product.images[index]}"),
-          ),
+        return FadeInImage(
+          placeholder: AssetImage("assets/images/no_photo.png"),
+          image: NetworkImage("${product.images[index]}"),
         );
       },
     );
