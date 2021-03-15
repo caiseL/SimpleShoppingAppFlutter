@@ -1,11 +1,14 @@
-class UIProvider {
-  static int _selectedIndex;
+import 'package:flutter/material.dart';
 
-  UIProvider();
+class UIProvider extends ChangeNotifier {
+  int _selectedIndex = 0;
 
   set selectedIndex(int i) {
     this.selectedIndex = i;
+    notifyListeners();
   }
 
-  get selectedIndex => _selectedIndex;
+  int get selectedIndex {
+    return this._selectedIndex;
+  }
 }

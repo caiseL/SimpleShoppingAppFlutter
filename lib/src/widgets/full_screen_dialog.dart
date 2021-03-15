@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_app/src/providers/ui_provider.dart';
 
-class FullScreenDialog extends StatefulWidget {
+class FullScreenDialog extends StatelessWidget {
   const FullScreenDialog({Key key}) : super(key: key);
 
   @override
-  _FullScreenDialogState createState() => _FullScreenDialogState();
-}
-
-class _FullScreenDialogState extends State<FullScreenDialog> {
-  UIProvider provider = UIProvider();
-
-  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -24,7 +17,11 @@ class _FullScreenDialogState extends State<FullScreenDialog> {
         title:
             Text('All Filters', style: Theme.of(context).textTheme.headline4),
         leading: IconButton(
-          icon: FaIcon(FontAwesomeIcons.times),
+          icon: FaIcon(
+            FontAwesomeIcons.times,
+            color: Colors.black,
+            size: 22.0,
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -54,42 +51,57 @@ class _FullScreenDialogState extends State<FullScreenDialog> {
             child: Text("Price range",
                 style: Theme.of(context).textTheme.headline4),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: _buildCircleAvatar(context),
-          )
+          CustomCircleAvatar()
         ],
       ),
     );
   }
+}
 
-  List<Widget> _buildCircleAvatar(BuildContext context) {
-    List<Widget> avatars = [];
+class CustomCircleAvatar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<UIProvider>(context);
+
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [aaa(context, provider)]);
+  }
+
+  Widget aaa(BuildContext context, UIProvider provider) {
+    Size size = MediaQuery.of(context).size;
+
+    int currentIndex = provider.selectedIndex;
     List<String> info = ["\$", "\$\$", "\$\$\$", "\$\$\$\$"];
-
-    for (int i = 0; i < 4; i++) {
-      avatars.add(
-        GestureDetector(
-          onTap: () {
-            provider.selectedIndex = i;
-            setState(() {});
-          },
-          child: CircleAvatar(
-            radius: 30.0,
-            backgroundColor: Colors.black,
+    return Container(
+      height: size.height * 0.1,
+      width: size.width,
+      child: ListView.builder(
+        itemCount: info.length,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int i) {
+          return GestureDetector(
+            onTap: () {
+              print("A");
+              currentIndex = i;
+            },
             child: CircleAvatar(
-              backgroundColor:
-                  provider.selectedIndex == i ? Colors.black : Colors.white,
-              radius: 29.0,
-              child: Text(info[i],
-                  style: provider.selectedIndex == i
-                      ? TextStyle(color: Colors.white, fontSize: 21.0)
-                      : Theme.of(context).textTheme.headline5),
+              radius: 30.0,
+              backgroundColor: Colors.black,
+              child: CircleAvatar(
+                backgroundColor:
+                    currentIndex == i ? Colors.black : Colors.white,
+                radius: 29.0,
+                child: Text(info[i],
+                    style: currentIndex == i
+                        ? TextStyle(color: Colors.white, fontSize: 21.0)
+                        : Theme.of(context).textTheme.headline5),
+              ),
             ),
-          ),
-        ),
-      );
-    }
-    return avatars;
+          );
+        },
+      ),
+    );
   }
 }
